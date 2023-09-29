@@ -1,0 +1,139 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600;1,700;1,900&family=Roboto+Mono:wght@500&family=Roboto:ital,wght@1,300&display=swap');
+
+body{
+          font-family: 'Poppins', sans-serif;
+          background-image: url('/assets/waa.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+}
+
+.center-div{
+padding-top: 10%;
+
+}
+.login-cont{
+          background-image: url('assets/log.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+color: rgb(255, 85, 85);
+
+}
+.btn.btn-success{
+          padding: .4em 2em;
+}
+
+form{
+          padding: 0 1em;
+}
+#login .title>span{
+font-size: .8em;
+}
+
+.card:hover {
+  transform: scale(1.05); 
+  transition: transform 0.5s ease-in-out; 
+  box-shadow: 0px 0px 10px rgba(255, 239, 239, 0.947); 
+}
+
+
+/* Column layout for screens 768px and smaller */
+@media (max-width: 768px) {
+  #metallica {
+    flex-direction: column;
+  }
+}
+
+/* Row layout for screens wider than 768px */
+@media (min-width: 769px) {
+  #metallica {
+    flex-direction: column;
+    align-items: center; /* Optional: Align the items vertically in the center */
+  }
+
+  #metallica img {
+    max-width: 50em;
+    height: auto; /* Adjust the width as needed for bigger screens */
+    padding: 20px;
+  }
+
+  #metallica p {
+    flex-grow: 1; /* Allow the text to grow and take the remaining space */
+  }
+}
+
+@media (max-width: 768px) {
+  #megadeth{
+    flex-direction: column;
+  }
+}
+
+/* Row layout for screens wider than 768px */
+@media (min-width: 769px) {
+  #megadeth {
+    flex-direction: column;
+    align-items: center; /* Optional: Align the items vertically in the center */
+  }
+
+   #megadeth img {
+    max-width: 50em;
+    height: auto; /* Adjust the width as needed for bigger screens */
+    padding: 20px;
+  }
+
+  #megadeth p {
+    flex-grow: 1; /* Allow the text to grow and take the remaining space */
+  }
+}
+
+@media (max-width: 768px) {
+  #slayer {
+    flex-direction: column;
+  }
+}
+
+/* Row layout for screens wider than 768px */
+@media (min-width: 769px) {
+ #slayer {
+    flex-direction: column;
+    align-items: center; /* Optional: Align the items vertically in the center */
+  }
+
+ #slayer img {
+    max-width: 50em;
+    height: auto; /* Adjust the width as needed for bigger screens */
+    padding: 20px;
+  }
+
+  #slayer p {
+    flex-grow: 1; /* Allow the text to grow and take the remaining space */
+  }
+}
+
+@media (max-width: 768px) {
+  #system {
+    flex-direction: column;
+  }
+}
+
+/* Row layout for screens wider than 768px */
+@media (min-width: 769px) {
+ #system{
+    flex-direction: column;
+    align-items: center; /* Optional: Align the items vertically in the center */
+  }
+
+ #system img {
+    max-width: 50em;
+    height: auto; /* Adjust the width as needed for bigger screens */
+    padding: 20px;
+  }
+
+  #system p {
+    flex-grow: 1; /* Allow the text to grow and take the remaining space */
+  }
+}
+
+
+
+

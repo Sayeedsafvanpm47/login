@@ -1,0 +1,188 @@
+<%- include('header') -%>
+<body style="background-image: url('/assets/d1.avif'); background-repeat: no-repeat; background-size: cover;">
+          
+
+<div class="text-center mt-5"   id="login">
+          
+<div class="container w-100  py-5 mt-5 ">
+
+        
+<h3 class="display-1"><span class="text-white">Welcome to </span><span class="text-danger"><u>KnowYourBands</u></span></h3>
+<h5 class="fs-2 text-white"><%=locals.user?user:"HELLO SAYEED🤘"%></h5>
+<button class="btn btn-danger"><a class="text-white" style="text-decoration: none;" href="/route/logout">Click here to Logout</a></button>
+<div><h2 class="fs-3 py-3 text-white">Lets explore some of your Favorite Bands..</h2></div>
+<div class="container">
+          <% const cardContents = [
+              {
+                title: "Metallica",
+                text: "Metallica : A Pioneering Journey in Heavy Metal",
+                textId: "metallica",
+                urlimg : "/assets/met.jpg"
+              },
+              {
+                title: "Megadeth",
+                text: "Megadeth : Shredding Through the Heavy Metal Realm ",
+                textId: "megadeth",
+                urlimg : "/assets/meg.jpeg"
+              },
+              {
+                title: "Slayer",
+                text: "Slayer : Reigning Supreme in the World of Thrash Metal",
+                textId: "slayer",
+                urlimg : "/assets/slayer.jpg"
+              },
+              {
+                title: "System of A down",
+                text: "System of A down : The Artistic Rebels of Alternative Metal ",
+                textId: "system",
+                urlimg : "/assets/sys.jpg"
+              },
+              // Add more objects for additional cards as needed
+          ]; %>
+          
+          <% for (let i = 0; i < cardContents.length; i++) { %>
+            <% if (i % 4 === 0) { %>
+              <div class="row">
+            <% } %>
+            
+            <div class="col-md-3 py-3">
+              <div class="card py-3 shadow-lg bg-dark" style="width: 18rem; ">
+                <img src="<%= cardContents[i].urlimg %>" class="card-img-top" alt="Card Image" style="height: 220px; width: 285px;">
+                <div class="card-body">
+                  <h5 class="card-title text-white text-center"><%= cardContents[i].title %></h5>
+                  <p class="card-text text-white" style="text-align: justify;"><%= cardContents[i].text %></p>
+                  <a href="#<%= cardContents[i].textId %>" class="btn btn-primary">Learn More</a>
+                </div>
+              </div>
+            </div>
+            
+            <% if (i % 4 === 3 || i === cardContents.length - 1) { %>
+              </div>
+            <% } %>
+          <% } %>
+        </div>
+
+        <div id="metallica" class="border container d-flex text-white">
+          
+          <img src="/assets/met.jpg" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
+          <p class="p-2 fs-5" style="text-align: justify;">
+
+                  <span class="fs-2">A Pioneering Journey in Heavy Metal :</span><br>
+
+
+For over four decades, Metallica has been a defining force in heavy metal. Founded in 1981 by James Hetfield and Lars Ulrich, the band's early years were marked by raw, aggressive performances in Los Angeles clubs. The arrival of guitarist Kirk Hammett and a series of groundbreaking albums, including "Master of Puppets," propelled them to prominence.
+
+Their eponymous "Black Album" in 1991 catapulted Metallica to international fame with hits like "Enter Sandman." Throughout the '90s and 2000s, they explored new musical territories while maintaining their core fan base.
+
+
+Metallica's influence on heavy metal is immeasurable. They're a cornerstone of the genre's "Big Four" and have inspired countless musicians across diverse genres. Their journey from a garage band to global icons is a testament to their enduring talent and dedication.
+
+
+Metallica's journey isn't just a story of a band; it's a symbol of the lasting power of heavy metal. With electrifying live performances and a legacy that spans generations, they continue to be a defining voice in the world of music.
+
+</p>
+
+</div>
+
+<div id="megadeth" class="border container d-flex text-white">
+         
+          <img src="/assets/meg.webp" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
+          <p class="p-2 fs-5" style="text-align: justify;">
+
+                  <span class="fs-2">Shredding Through the Heavy Metal Realm :</span><br>
+
+              
+
+                  
+                  Megadeth, a powerhouse in the heavy metal world, was forged in 1983 by guitarist and vocalist Dave Mustaine. Emerging from the shadow of Metallica, Mustaine's vision for a faster, more technical style of thrash metal gave birth to Megadeth.
+                  
+            
+                  With classics like "Peace Sells... But Who's Buying?" and "Rust in Peace," Megadeth established themselves as thrash metal titans in the 1980s. Mustaine's intricate guitar work and thought-provoking lyrics set them apart.
+                  
+                  
+                  Megadeth faced internal struggles and lineup changes but continued to deliver remarkable albums like "Countdown to Extinction" and "Symphony of Destruction." Their dedication to musicianship and political themes resonated with fans.
+                  
+                  Megadeth's influence on the heavy metal genre is undeniable. Their technical prowess pushed boundaries, and their music often delved into complex subjects, creating a unique niche within the metal world.
+                  
+                 
+                  Megadeth's journey through the heavy metal realm is a testament to Dave Mustaine's determination and musicianship. With a legacy built on shredding guitar solos and thought-provoking lyrics, they remain a force to be reckoned with in the world of heavy metal.
+</p>
+
+</div>
+
+</div>
+
+<div id="slayer" class="border container d-flex text-white">
+          
+          <img src="/assets/slayer.jpg" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
+          <p class="p-2 fs-5" style="text-align: justify;">
+
+                  <span class="fs-2">Reigning Supreme in the World of Thrash Metal:</span><br>
+
+
+                  Slayer, a name that strikes fear and awe into the hearts of metalheads worldwide, emerged in 1981 as one of the "Big Four" thrash metal bands. Their ferocious sound and controversial lyrics have made them legends in the world of heavy music.
+                  
+
+                  Formed in California by guitarists Kerry King and Jeff Hanneman, Slayer quickly became known for their breakneck speed and aggressive style. Their debut album, "Show No Mercy," set the stage for the sonic onslaught to come.
+                  
+
+                  Slayer's relentless pursuit of extreme music led to iconic albums like "Reign in Blood" and "South of Heaven." These records showcased their technical prowess and lyrical themes that pushed boundaries.
+                  
+
+                  Slayer's lyrics, often exploring themes of death, war, and the occult, sparked controversy and earned them a devoted cult following. Their music became an outlet for those seeking the darker side of heavy metal.
+
+                  Slayer's impact on the genre is immeasurable. Their sonic brutality and uncompromising attitude have inspired countless bands and left an indelible mark on heavy metal.
+                  
+            
+                  Slayer's journey through the world of thrash metal is a tale of unapologetic intensity. With their unparalleled aggression and uncompromising vision, they reign as one of the most influential and feared bands in heavy music history.
+</p>
+
+</div>
+</div>
+
+<div id="system" class="border container d-flex text-white">
+           
+          <img src="/assets/sys.jpg" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
+          <p class="p-2 fs-5" style="text-align: justify;">
+
+                  <span class="fs-2">The Artistic Rebels of Alternative Metal :</span><br>
+
+                
+                  System of a Down (SOAD) emerged in the late 1990s as a trailblazing force in alternative metal. Their unique blend of socio-political lyrics and eclectic musical styles has earned them a dedicated fanbase and critical acclaim.
+                  
+               
+                  Founded in Los Angeles, California, by Serj Tankian, Daron Malakian, Shavo Odadjian, and John Dolmayan, SOAD set out to challenge musical norms. They effortlessly blended metal, punk, folk, and Middle Eastern influences into their sound.
+                  
+                
+                  SOAD's lyrical content is characterized by its unflinching social and political commentary. Songs like "Chop Suey!" and "B.Y.O.B." tackle issues such as war, government corruption, and societal unrest, making them stand out in the music industry.
+                  
+                  Their eponymous debut album and the follow-up "Toxicity" catapulted SOAD to international stardom. The latter, in particular, showcased their ability to create thought-provoking music with mainstream appeal.
+                  
+               
+                  After a hiatus in the mid-2000s, SOAD reunited to the delight of their fans. Their 2020 release, "Protect the Land," addressed the Armenian-Azerbaijani conflict and demonstrated their continued relevance.
+              
+                  System of a Down's willingness to address uncomfortable truths through their music has resonated with listeners worldwide. Their fusion of genres and fearless lyrics have left an indelible mark on the alternative metal landscape.
+                  
+                  System of a Down's musical journey is one of artistic rebellion and social consciousness. They have not only shaped the sound of alternative metal but have also used their platform to shed light on pressing global issues, making them true trailblazers in the world of music.
+</p>
+
+</div>
+
+</div>
+
+
+
+        
+        
+                  
+
+
+         
+
+
+
+
+</div>
+</div>
+
+<%- include('footer') -%>

@@ -1,0 +1,136 @@
+<%- include('header')-%>
+<div class="text-center"><h1 class="display-1" style="font-weight: bolder;"><u>KnowYourBands</u></h1></div>
+<div class="center-div" id="login">
+
+  <div class="container w-25 border rounded py-5 login-cont shadow-lg">
+    <div class="title text-center">
+      <h2 class="font-weight-bold">Login Here</h2>
+      <span class="fs-7" style="font-weight: bolder; color: aliceblue;">Explore KnowYourBands</span>
+      <% if (typeof errorMsg !== 'undefined' && errorMsg !== '') { %>
+      <div class="text-danger fs-7">
+        <%= errorMsg %>
+      </div>
+      <% } if (typeof logout !== 'undefined' && logout !== '') { %>
+      <div class="text-success fs-7">
+        <%= logout %>
+      </div>
+      <% } %>
+
+      <% if (typeof resub !== 'undefined' && resub !== '') { %>
+      <p id="countdown"></p>
+      <p class="text-warning">Resubmission error: You will be redirected back to login section.</p>
+      <script>
+        // Countdown timer function
+        function startCountdown(seconds) {
+          let timer = seconds;
+          const countdownElement = document.getElementById("countdown");
+
+          function updateCountdown() {
+            countdownElement.innerHTML = `You can enter login details in ${timer} seconds.`;
+            timer--;
+
+            if (timer < 0) {
+              clearInterval(interval);
+              countdownElement.style.display = "none"; // Hide the countdown message
+              redirectToLogin(); // Redirect to the login page after the timeout
+            }
+          }
+
+          updateCountdown(); // Initial update
+          const interval = setInterval(updateCountdown, 1000);
+        }
+
+        // Redirect to the login page
+        function redirectToLogin() {
+          window.location.href = '/route/login'; // Change the URL to your login page
+        }
+
+        // Start the countdown when the page loads (if resubmission error is present)
+        startCountdown(<%= countdown %>);
+      </script>
+      <% } %>
+
+    </div>
+    <form action="/route/login" method="POST" class="pt-3" id="login-form">
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="email" name="email" id="email">
+        <small class="form-text text-left text-white error-message"></small>
+        <small class="form-text text-left text-white " style="cursor: pointer;">Register email address</small>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="password" placeholder="Password" id="password">
+        <small class="form-text text-left text-white error-message"></small>
+        <small class="form-text text-left text-white" style="cursor: pointer;">Forgot Password?</small>
+      </div>
+      <div class="text-center py-3 ">
+        <button type="submit" class="btn btn-success rounded-pill">Submit</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+<script>
+  window.onload = function() {
+    // Clear the input fields
+   
+    document.getElementsByName("password")[0].value = "";
+  };
+</script>
+
+<script>
+
+// loginValidation.js
+
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.querySelector("#login-form");
+
+  loginForm.addEventListener("submit", function (event) {
+    const emailField = document.querySelector("#email");
+    const passwordField = document.querySelector("#password");
+
+    // Reset previous error messages
+    const errorMessages = document.querySelectorAll(".error-message");
+    errorMessages.forEach((message) => {
+      message.textContent = "";
+    });
+
+    let isValid = true;
+
+    if (!emailField.value.trim()) {
+      isValid = false;
+      displayErrorMessage(emailField, "Email is required");
+      // Automatically clear the error message after 5 seconds
+      setTimeout(() => {
+        clearErrorMessage(emailField);
+      }, 3000);
+    }
+
+    if (!passwordField.value.trim()) {
+      isValid = false;
+      displayErrorMessage(passwordField, "Password is required");
+      // Automatically clear the error message after 5 seconds
+      setTimeout(() => {
+        clearErrorMessage(passwordField);
+      }, 3000);
+    }
+
+    if (!isValid) {
+      event.preventDefault(); // Prevent form submission if there are errors
+    }
+  });
+
+  function displayErrorMessage(inputField, message) {
+    const errorMessage = inputField.nextElementSibling;
+    errorMessage.textContent = message;
+  }
+
+  function clearErrorMessage(inputField) {
+    const errorMessage = inputField.nextElementSibling;
+    errorMessage.textContent = "";
+  }
+});
+
+
+
+</script>
+<%- include('footer')-%>
