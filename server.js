@@ -1,56 +1,76 @@
 const express = require('express')
 const app = express()
 const path = require('path')
-const bodyparser = require('body-parser')
 const session = require('express-session')
-const {v4:uuidv4} = require('uuid')
-const router = require('./router')
-var createError = require('http-errors')
-const cookieParser = require('cookie-parser')
 
 
-require("dotenv").config();
-app.use(function(req,res,next){
-  res.header('Cache-Control','no-cache,no-store')
+app.use(function (req, res, next) {
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
   next()
-})
+});
 
-
-const port = process.env.PORT || 8080
-
-
-
-app.use(bodyparser.json())
-app.use(bodyparser.urlencoded({
-          extended:true
-}))
-
-app.use(cookieParser())
-
+app.use(express.json())
+app.use(express.urlencoded())
 
 app.set('view engine','ejs')
 
-// load static file
-app.use('/static',express.static(path.join(__dirname,'public')))
-app.use('/assets',express.static(path.join(__dirname,'public/assets')))
 
+const credentials = {
+  email : "sayeed@gmail.com",
+  password : "admin123"
+}
 
 app.use(session({
-          secret:"secret-key",
-          cookie:{secure:false,httpOnly:false},
-          resave:false,
-          saveUninitialized:false
+  secret:"secret-key",
+  resave:false,
+  saveUninitialized:false
 }))
 
+function isSigned(req,res,next){
+  if(req.session.isLogged){
+    next()
+  }
+  else{
+    res.redirect('/')
+  }
+  
+}
 
-
-app.use('/route',router)
+app.use('/static',express.static(path.join(__dirname,'/public')))
+app.use('/assets',express.static(path.join(__dirname,'/public/assets')))
 
 app.get('/',(req,res)=>{
-
-          res.render('base',{title:"Login System"})
+  if(req.session.isLogged)
+  {
+    res.redirect('/dashboard')
+  }
+  else{
+    res.render('./base')
+  }
 })
 
+app.post('/login',(req,res)=>{
+if(req.body.email===credentials.email && req.body.password===credentials.password){
+  req.session.user = req.body.email;
+  req.session.isLogged = true;
+  res.redirect('/dashboard')
+}
+else{
+ 
+  res.render('base',{error:"Invalid credentials"})
+}
+})
 
+app.get('/dashboard',isSigned,(req,res)=>{
+ res.render('dashboard')
+})
 
-app.listen(port,()=>console.log("Listening to the server on 3000 "))
+app.get('/logout',(req,res)=>{
+  req.session.destroy()
+  // res.redirect('/')
+  res.render('base',{logout:"Logout succesfull"})
+})
+
+app.listen(3300,()=>console.log("Session started"))

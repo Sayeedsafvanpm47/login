@@ -3,7 +3,7 @@
 
 body{
           font-family: 'Poppins', sans-serif;
-          background-image: url('/assets/waa.jpg');
+          background-image: url('assets/waa.jpg');
           background-size: cover;
           background-repeat: no-repeat;
 }

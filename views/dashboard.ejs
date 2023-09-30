@@ -1,5 +1,5 @@
 <%- include('header') -%>
-<body style="background-image: url('/assets/d1.avif'); background-repeat: no-repeat; background-size: cover;">
+<body style="background-image: url('assets/d1.avif'); background-repeat: no-repeat; background-size: cover;">
           
 
 <div class="text-center mt-5"   id="login">
@@ -9,7 +9,7 @@
         
 <h3 class="display-1"><span class="text-white">Welcome to </span><span class="text-danger"><u>KnowYourBands</u></span></h3>
 <h5 class="fs-2 text-white"><%=locals.user?user:"HELLO SAYEED🤘"%></h5>
-<button class="btn btn-danger"><a class="text-white" style="text-decoration: none;" href="/route/logout">Click here to Logout</a></button>
+<button class="btn btn-danger"><a class="text-white" style="text-decoration: none;" href="/logout">Click here to Logout</a></button>
 <div><h2 class="fs-3 py-3 text-white">Lets explore some of your Favorite Bands..</h2></div>
 <div class="container">
           <% const cardContents = [
@@ -17,25 +17,25 @@
                 title: "Metallica",
                 text: "Metallica : A Pioneering Journey in Heavy Metal",
                 textId: "metallica",
-                urlimg : "/assets/met.jpg"
+                urlimg : "assets/met.jpg"
               },
               {
                 title: "Megadeth",
                 text: "Megadeth : Shredding Through the Heavy Metal Realm ",
                 textId: "megadeth",
-                urlimg : "/assets/meg.jpeg"
+                urlimg : "assets/meg.jpeg"
               },
               {
                 title: "Slayer",
                 text: "Slayer : Reigning Supreme in the World of Thrash Metal",
                 textId: "slayer",
-                urlimg : "/assets/slayer.jpg"
+                urlimg : "assets/slayer.jpg"
               },
               {
                 title: "System of A down",
                 text: "System of A down : The Artistic Rebels of Alternative Metal ",
                 textId: "system",
-                urlimg : "/assets/sys.jpg"
+                urlimg : "assets/sys.jpg"
               },
               // Add more objects for additional cards as needed
           ]; %>
@@ -64,7 +64,7 @@
 
         <div id="metallica" class="border container d-flex text-white">
           
-          <img src="/assets/met.jpg" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
+          <img src="assets/met.jpg" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
           <p class="p-2 fs-5" style="text-align: justify;">
 
                   <span class="fs-2">A Pioneering Journey in Heavy Metal :</span><br>
@@ -86,7 +86,7 @@ Metallica's journey isn't just a story of a band; it's a symbol of the lasting p
 
 <div id="megadeth" class="border container d-flex text-white">
          
-          <img src="/assets/meg.webp" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
+          <img src="assets/meg.webp" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
           <p class="p-2 fs-5" style="text-align: justify;">
 
                   <span class="fs-2">Shredding Through the Heavy Metal Realm :</span><br>
@@ -114,7 +114,7 @@ Metallica's journey isn't just a story of a band; it's a symbol of the lasting p
 
 <div id="slayer" class="border container d-flex text-white">
           
-          <img src="/assets/slayer.jpg" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
+          <img src="assets/slayer.jpg" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
           <p class="p-2 fs-5" style="text-align: justify;">
 
                   <span class="fs-2">Reigning Supreme in the World of Thrash Metal:</span><br>
@@ -142,7 +142,7 @@ Metallica's journey isn't just a story of a band; it's a symbol of the lasting p
 
 <div id="system" class="border container d-flex text-white">
            
-          <img src="/assets/sys.jpg" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
+          <img src="assets/sys.jpg" style="height: auto; width: 100%; padding: 20px; justify-content: center; ">
           <p class="p-2 fs-5" style="text-align: justify;">
 
                   <span class="fs-2">The Artistic Rebels of Alternative Metal :</span><br>
@@ -184,5 +184,13 @@ Metallica's journey isn't just a story of a band; it's a symbol of the lasting p
 
 </div>
 </div>
+
+<script>
+  // Detect the back button press
+  window.addEventListener('popstate', function(event) {
+    // Redirect to the /logout route
+    window.location.href = '/dashboard';
+  });
+</script>
 
 <%- include('footer') -%>
